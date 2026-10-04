@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import StatCard from "../components/StatCard";
 import ComplianceCard from "../components/ComplianceCard";
+import { dashboardStats, categoryData } from "../data/dummyData";
 
 function Dashboard() {
  return (
@@ -14,21 +15,41 @@ function Dashboard() {
   <p>Swachhta & Green Compliance Overview</p>
 </div>
 
-        <section>
-          <StatCard title="Overall Compliance" value="82%" />
-          <StatCard title="Swachhta Score" value="88%" />
-          <StatCard title="Green Score" value="76%" />
-          <StatCard title="Open Issues" value="12" />
-        </section>
+        
+         <section>
+  <StatCard
+    title={dashboardStats[0].title}
+    value={dashboardStats[0].value}
+  />
+
+  <StatCard
+    title={dashboardStats[1].title}
+    value={dashboardStats[1].value}
+  />
+
+  <StatCard
+    title={dashboardStats[2].title}
+    value={dashboardStats[2].value}
+  />
+
+  <StatCard
+    title={dashboardStats[3].title}
+    value={dashboardStats[3].value}
+  />
+</section>
+        
 
         <section className="compliance-section">
   <h2>Compliance by Category</h2>
           <h2>Compliance by Category</h2>
 
-          <ComplianceCard category="Cleanliness" score="90" />
-          <ComplianceCard category="Waste Management" score="82" />
-          <ComplianceCard category="Water Management" score="78" />
-          <ComplianceCard category="Energy" score="75" />
+          {categoryData.map((item) => (
+  <ComplianceCard
+    key={item.category}
+    category={item.category}
+    score={item.score}
+  />
+))}
         </section>
       </main>
     </div>
